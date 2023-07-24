@@ -1,28 +1,18 @@
 // import { error } from "console";
 import React from "react";
 
-function QuestionItem({ question, onDeleteItem}) {
+function QuestionItem({ question, onDeleteItem, onUpdateAnswer }) {
   const { id, prompt, answers, correctIndex } = question;
 
-  function handleDeleteClick() {
-    fetch(`http://localhost:4000/questions/${question.id}`, {
-    method: "DELETE",
-  })
-    .then((r) => {
-      if (!Response.ok) {
-        throw new Error("The question is being stubborn")
-      }
-      return r.json();
-    })
-    .then(() => onDeleteItem(question.id));
-    // .catch((error) => console.log( "Error deleting the question:", error));
-}
-
+  
   const options = answers.map((answer, index) => (
     <option key={index} value={index}>
       {answer}
     </option>
   ));
+
+  const handleDeleteItem = () => onDeleteItem(id);
+  const handleUpdateAnswer = (e) => onUpdateAnswer(id, parseInt(e.target.value))
 
   return (
     <li>
@@ -30,9 +20,10 @@ function QuestionItem({ question, onDeleteItem}) {
       <h5>Prompt: {prompt}</h5>
       <label>
         Correct Answer:
-        <select defaultValue={correctIndex}>{options}</select>
+        <select defaultValue={correctIndex}
+        onUpdateAnswer={handleUpdateAnswer}>{options}</select>
       </label>
-      <button className="remove" onClick={handleDeleteClick}>Delete Question</button>
+      <button className="remove" onClick={handleDeleteItem}>Delete Question</button>
     </li>
   );
 }

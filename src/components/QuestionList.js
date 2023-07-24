@@ -10,14 +10,14 @@ function QuestionList() {
     })
       .then((r) => r.json)
       .then(() => {
-        const newQuestion = questions.filter(
+        let newQuestion = questions.filter(
           (question) => question.id !== questionId
         );
         setQuestions(newQuestion);
       });
   };
 
-  const handleUpdateAnswer = ({ questionsId, correctIndex }) => {
+  const handleUpdateAnswer = ({ questionId, correctIndex }) => {
     fetch(`http://localhost:4000/questions/${questionId}`, {
       method: "PATCH",
       headers: {
@@ -26,8 +26,8 @@ function QuestionList() {
       body: JSON.stringify({ correctIndex }),
     })
       .then((r) => r.json)
-      .then((newQuestion) => {
-        const newQuestion = questions.map((question) => {
+      .then(() => {
+        let newQuestion = questions.map((question) => {
           if (question.id === newQuestion.id) return newQuestion;
           return question;
         });

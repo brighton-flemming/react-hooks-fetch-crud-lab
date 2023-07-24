@@ -65,17 +65,6 @@
         "controlled"
       ],
       "correctIndex": 1
-    },
-    {
-      "prompt": "How old is the cat?",
-      "answers": [
-        "20",
-        "4",
-        "6",
-        "7"
-      ],
-      "correctIndex": 2,
-      "id": 8
     }
   ]
 }

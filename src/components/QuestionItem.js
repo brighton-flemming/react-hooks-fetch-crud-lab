@@ -28,4 +28,4 @@ function QuestionItem({ question, onDeleteItem, onUpdateAnswer }) {
   );
 }
 
-export default QuestionItem;
+export default QuestionItem

@@ -25,7 +25,7 @@ function QuestionItem({ question, onDeleteItem, onUpdateAnswer }) {
       </label>
       <button className="remove" onClick={handleDeleteItem}>Delete Question</button>
     </li>
-  );
+  )
 }
 
 export default QuestionItem

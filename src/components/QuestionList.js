@@ -35,6 +35,11 @@ function QuestionList() {
     setQuestions(newQuestion);
   })
 }
+
+const questionItems = questions.map((question) => (
+  <QuestionItem key={question.id}question={question} onDeleteItem={handleDeleteItem} onUpdateAnswer={handleUpdateAnswer} />
+
+))
   
 
   useEffect(() => {
@@ -48,8 +53,7 @@ function QuestionList() {
   return (
     <section>
       <h1>Quiz Questions</h1>
-      <ul>{questions.map((question) => (
-      <QuestionItem key={question.id}question={question} onDeleteItem={handleDeleteItem} /> ))}
+      <ul>{questionItems}/> 
         </ul>
     </section>
   );

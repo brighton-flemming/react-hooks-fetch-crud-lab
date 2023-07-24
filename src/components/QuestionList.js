@@ -32,8 +32,9 @@ function QuestionList() {
       return question;
     })
 
-    setQuestions(newQuestion)
-
+    setQuestions(newQuestion);
+  })
+}
   
 
   useEffect(() => {
